@@ -7,18 +7,33 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Noto Sans", sans-serif;
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    min-height: 100vh; /* Ensure the body takes full height */
+    margin: 0;
+}
+
+header {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
+}
+
+.logo {
+    max-width: 200px; /* Adjust the size of the logo */
+    height: auto;
 }
 
 .container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+    flex-grow: 1; /* Allow the container to grow */
+    padding: 20px 0; /* Prevent overlap with footer */
+    margin: 0 auto; /* Center container within the body */
 }
 
 .box {
@@ -27,17 +42,18 @@ body {
     background-color: #fff;
     border: 1px solid #ccc;
     position: relative;
-    height: 175px;
+    height: 140px;
     display: flex;
     flex-direction: column; /* Stack image and text */
     justify-content: flex-start; /* Align items at the top */
     overflow: hidden;
     transition: transform 0.3s ease, background-color 0.3s ease; /* Add transform to the transition */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Add slight shadow for effect */
 }
 
 .box:hover {
-  transform: scale(1.05); /* Grow the box slightly */
-  background-color: #fff; /* Keep the background color same */
+    transform: scale(1.05); /* Grow the box slightly */
+    background-color: #fff; /* Keep the background color same */
 }
 
 a {
@@ -58,23 +74,49 @@ img {
 
 .text-container {
     position: absolute;
-    bottom: 1px;
+    bottom: 0;
     width: 100%;
-    background-color: #f0f0f0;
+    background-color: #0065B3;
     padding: 5px;
-    font-weight: bold;
-    font-size: 0.9em;
+    font-size: 12px;
+    font-weight: 500;
     text-align: center;
+    color: white;
+}
+
+/* Sticky footer with centered text */
+footer {
+    background-color: #0065B3;
+    padding: 20px;
+    font-size: 1em;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 40px; /* Define a fixed height for the footer */
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
 }
 
 @media (max-width: 768px) {
     .box {
         width: calc(45% - 20px);
     }
+
+    footer {
+        text-align: center;
+    }
 }
 
 @media (max-width: 480px) {
     .box {
         width: calc(100% - 20px);
+    }
+
+    footer {
+        text-align: center;
     }
 }
