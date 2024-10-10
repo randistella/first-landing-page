@@ -2,58 +2,79 @@
 
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     font-family: 'Roboto', sans-serif;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     height: 100vh;
-    overflow: hidden;
     margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .box {
     width: calc(20% - 20px);
     margin: 10px;
-    padding: 20px;
-    background-color: #fff; /* Background color changed to white */
-    text-align: center;
+    background-color: #fff;
     border: 1px solid #ccc;
-    transition: background-color 0.3s;
+    position: relative;
+    height: 175px;
+    display: flex;
+    flex-direction: column; /* Stack image and text */
+    justify-content: flex-start; /* Align items at the top */
+    overflow: hidden;
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Add transform to the transition */
 }
 
 .box:hover {
-    background-color: #e0e0e0;
+  transform: scale(1.05); /* Grow the box slightly */
+  background-color: #fff; /* Keep the background color same */
 }
 
 a {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    color: inherit;
     text-decoration: none;
-    color: #333;
-    display: inline-block; /* Ensure links are inline */
 }
 
 img {
-    width: 100%; /* Make image fill the box */
-    height: auto; /* Maintain aspect ratio */
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin: 0; /* Remove margin to stick image to the top */
+    padding: 30px 20px 5px;
 }
 
-.container {
-    display: flex; /* Use flexbox for horizontal layout */
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
-    justify-content: center; /* Center the boxes */
+.text-container {
+    position: absolute;
+    bottom: 1px;
+    width: 100%;
+    background-color: #f0f0f0;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 0.9em;
+    text-align: center;
 }
 
 @media (max-width: 768px) {
     .box {
-        width: calc(45% - 20px); /* Two boxes per row */
+        width: calc(45% - 20px);
     }
 }
 
 @media (max-width: 480px) {
     .box {
-        width: calc(100% - 20px); /* One box per row */
+        width: calc(100% - 20px);
     }
 }
