@@ -1,122 +1,135 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&display=swap');
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
 }
 
 body {
-    font-family: "Noto Sans", sans-serif;
-    display: flex;
-    flex-direction: column; /* Stack elements vertically */
-    min-height: 100vh; /* Ensure the body takes full height */
-    margin: 0;
+  font-family: 'Noto Sans', sans-serif;
+  background: linear-gradient(to right, #e6f0fa, #f4f9ff);
+  color: #333;
+  display: flex;
+  flex-direction: column;
 }
 
+/* Header */
 header {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  padding: 20px 0;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: center;
 }
 
 .logo {
-    max-width: 200px; /* Adjust the size of the logo */
-    height: auto;
+  max-width: 180px;
+  height: auto;
 }
 
+/* Container */
 .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Center items horizontally */
-    align-items: center; /* Center items vertically */
-    flex-grow: 1; /* Allow the container to grow */
-    padding: 20px 0; /* Prevent overlap with footer */
-    margin: 0 auto; /* Center container within the body */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 20px;
 }
 
+/* Box / Card */
 .box {
-    width: calc(20% - 20px);
-    margin: 10px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    position: relative;
-    height: 140px;
-    display: flex;
-    flex-direction: column; /* Stack image and text */
-    justify-content: flex-start; /* Align items at the top */
-    overflow: hidden;
-    transition: transform 0.3s ease, background-color 0.3s ease; /* Add transform to the transition */
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Add slight shadow for effect */
+  background-color: #fff;
+  width: 400px;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .box:hover {
-    transform: scale(1.05); /* Grow the box slightly */
-    background-color: #fff; /* Keep the background color same */
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 101, 179, 0.25);
 }
 
 a {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    color: inherit;
-    text-decoration: none;
+  display: block;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
 }
 
-img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    margin: 0; /* Remove margin to stick image to the top */
-    padding: 30px 20px 5px;
+/* Image and Overlay Container */
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
-.text-container {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-color: #0065B3;
-    padding: 5px;
-    font-size: 12px;
-    font-weight: 500;
-    text-align: center;
-    color: white;
+/* Image */
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
-/* Sticky footer with centered text */
+/* Overlay */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 101, 179, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.box:hover .overlay {
+  opacity: 1;
+}
+
+.overlay-text {
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  padding: 0 15px;
+}
+
+/* Footer */
 footer {
-    background-color: #0065B3;
-    padding: 20px;
-    font-size: 1em;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    height: 40px; /* Define a fixed height for the footer */
-    font-size: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
+  background-color: #0065B3;
+  color: white;
+  padding: 15px;
+  font-size: 10px;
+  text-align: right;
+  margin-top: auto;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
-    .box {
-        width: calc(45% - 20px);
-    }
-
-    footer {
-        text-align: center;
-    }
+  .box {
+    width: 90%;
+  }
 }
 
 @media (max-width: 480px) {
-    .box {
-        width: calc(100% - 20px);
-    }
+  .box {
+    width: 100%;
+  }
 
-    footer {
-        text-align: center;
-    }
+  .overlay-text {
+    font-size: 16px;
+  }
 }
